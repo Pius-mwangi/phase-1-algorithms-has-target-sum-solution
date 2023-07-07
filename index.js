@@ -1,17 +1,51 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  // Algorithm:
+  // 1. Create an empty set to store the numbers we encounter while iterating through the array.
+  // 2. Iterate through each number in the array.
+  //    - Calculate the difference between the target and the current number.
+  //    - Check if the difference exists in the set. If it does, return true because we found two numbers that sum up to the target.
+  //    - If the difference does not exist in the set, add the current number to the set.
+  // 3. If we finish iterating through the entire array without finding a pair that sums up to the target, return false.
+
+  const numSet = new Set();
+
+  for (let num of array) {
+    const difference = target - num;
+
+    if (numSet.has(difference)) {
+      return true;
+    }
+
+    numSet.add(num);
+  }
+
+  return false;
 }
 
 /* 
-  Write the Big O time complexity of your function here
+  Time Complexity: O(n), where n is the length of the input array. We iterate through each element of the array once.
+
+  Space Complexity: O(n), where n is the length of the input array. In the worst case, the set can store all n elements of the array.
 */
 
 /* 
-  Add your pseudocode here
+  Pseudocode:
+  1. Create an empty set.
+  2. Iterate through each number in the array.
+     - Calculate the difference between the target and the current number.
+     - Check if the difference exists in the set.
+       - If it does, return true.
+     - Add the current number to the set.
+  3. Return false, as we didn't find a pair that sums up to the target.
 */
 
 /*
-  Add written explanation of your solution here
+  Solution Explanation:
+  - The function solves the problem by using a set to keep track of numbers encountered while iterating through the array.
+  - For each number, it calculates the difference between the target and the current number.
+  - If the difference already exists in the set, it means we have found a pair of numbers that sum up to the target, so the function returns true.
+  - If the difference does not exist in the set, the current number is added to the set.
+  - If we finish iterating through the entire array without finding a pair that sums up to the target, the function returns false.
 */
 
 // You can run `node index.js` to view these console logs
